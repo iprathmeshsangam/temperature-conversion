@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature conversion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        
+
+        <form action="">
+            <h3>Temperature conversion</h3>
+            <input type="number" id="textBox" value="0">
+        <br>
+
+            <input type="radio" id="toFahrenheit" name="unit">
+            <label for="toFahrenheit">Celsius  ➡️  Fahrenheit</label>
+
+        <br>
+            <input type="radio"  id="toCelsius" name="unit">
+            <label for="toCelsius">Fahrenheit  ➡️  Celsius</label>
+
+        <br>
+            <button type="button" id="submit" onclick="convert()">Submit</button>
+        
+        <p id="results"></p>
+        </form>
+    </div>
+
+
+    <script>
+        //converting temperature 
+
+const textBox = document.getElementById("textBox");
+
+const toFahrenheit = document.getElementById("toFahrenheit");
+
+const toCelsius = document.getElementById("toCelsius");
+
+const results = document.getElementById("results");
+
+let temp;
+
+function convert(){
+    if(toFahrenheit.checked){
+        temp = Number(textBox.value);
+        temp = temp * 9/5 + 32;
+        if(temp <=0){
+            results.textContent = temp.toFixed(1) +"°F ❄️";
+        }else{
+            results.textContent = temp.toFixed(1) +"°F ⛅";
+        }
+
+        
+    }
+    else if(toCelsius.checked){
+        temp = Number(textBox.value);
+        temp = (temp - 32) * (5/9);
+        if(temp <=0){
+            results.textContent = temp.toFixed(1) +"°C ❄️";
+        }else{
+            results.textContent = temp.toFixed(1) +"°C ⛅";
+        }
+    }
+    else{
+        results.textContent = "Select an option";
+    }
+}
+    </script>
+</body>
+</html>
